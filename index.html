@@ -19,7 +19,7 @@
 <!-- Header -->
 <div class="header" >
   <h1>Pixel Art Maker</h1>
-  <p>A Project in 'Intro to the Programming Nanodegree, Udacity'.</p>
+  <p>Project 4 in 'Intro to the Programming Nanodegree, Udacity'.</p>
 </div>
 
 <!-- Navigation Bar -->
@@ -38,36 +38,53 @@
     <div class="fakeimg" style="height:200px;">Image</div>
     <p>Vamshi Krishna Prime, Student in Udacity</p>
     <h3>Canvas options:</h3>
-    <p>Change the canves settings using below options</p>
+    <p>Change the canvas settings using below options</p>
     <!-- <div class="fakeimg" style="height:60px;">Image</div><br>
     <div class="fakeimg" style="height:60px;">Image</div><br>
     <div class="fakeimg" style="height:60px;">Image</div> -->
     <button type="button" id="reset-btn" class="btn btn-lg btn-outline-danger">RESET</button>
     <button type="button" id="color-btn" class="btn btn-lg btn-outline-secondary">Random Color</button>
     <button type="button" id="gridsize-btn" class="btn btn-lg btn-outline-secondary">Erase</button>
+
+
   </div>
-  <div class="main">
-    <h2>TITLE HEADING</h2>
-    <h5>Title description, Dec 7, 2017</h5>
-    <div class="fakeimg" style="height:200px;">Image</div>
-    <p>Some text..</p>
-    <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-    <br>
-    <h2>TITLE HEADING</h2>
-    <h5>Title description, Sep 2, 2017</h5>
-    <div class="fakeimg" style="height:200px;">Image</div>
-    <p>Some text..</p>
-    <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+  <div class="main" align="center">
+    <h1>Pixel Canvas</h1>
+    <h2>Choose Grid Size</h2>
+    <form id="sizePicker" onsubmit="createCanvas()">
+        Grid Height:
+        <input type="number" id="input_height" name="height" min="0" max="50" step="1" placeholder="0-50"  required>
+        Grid Width:
+        <input type="number" id="input_width" name="width" min="0" max="50" step="1" placeholder="0-50"  required>
+        <input type="submit">
+    </form>
+    <h2>Pick A Color</h2>
+    <input type="color" id="colorPicker">
+    <!--  -->
+        <section id="canvas"></section>
+        <section>
+          <div class="container-fluid controls">
+            <div class="row justify-content-center">
+
+                <!-- <button type="button" id="reset-btn" class="btn btn-lg btn-outline-danger">RESET</button>
+                <button type="button" id="color-btn" class="btn btn-lg btn-outline-secondary">Random Color</button>
+                <button type="button" id="gridsize-btn" class="btn btn-lg btn-outline-secondary">Erase</button> -->
+
+            </div>
+          </div>
+        </section>
+
+        <!--  -->
   </div>
 </div>
 
 <!-- Footer -->
 <div class="footer">
-  <h2>Footer</h2>
+  <h2>Languages: HTML, CSS, JavaScript</h2>
 </div>
 
-
-
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="designs.js"></script>
 
   </body>
 </html>
