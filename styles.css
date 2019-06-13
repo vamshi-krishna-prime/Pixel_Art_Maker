@@ -65,11 +65,42 @@ body {
   padding: 20px;
 }
 
-.btn {
+.image{
+  padding: 0px;
+  border: 0px;
+  margin: 5px 10px 5px 10px;
+  width: 200px;
+  border-radius: 20%;
+}
+
+/* .btn {
   background-color: #aaa;
   width: 100%;
   padding: 20px;
+} */
+
+.btn{
+  -webkit-border-radius: 12;
+  -moz-border-radius: 12;
+  border-radius: 12px;
+  font-family: Courier New;
+  /* width: auto; */
+  width: 50%;
+  color: #0a080a;
+  font-size: 18px;
+  background: #d9d9d9;
+  padding: 10px 20px 10px 20px;
+  border: solid #949494 1px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
 }
+
+.btn:hover {
+  background: #949494;
+  text-decoration: none;
+}
+
 
 /* Footer */
 .footer {
