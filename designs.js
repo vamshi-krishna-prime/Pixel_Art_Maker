@@ -111,6 +111,7 @@ function changeColor(){
     // cell.setAttribute("class", "cell");
   };
 
+
 function eraseGrid(){
   const cell = document.querySelectorAll('.cell, .colorCell');
 	cell.forEach(cell => {
