@@ -197,21 +197,6 @@ var toggleButtons = function(toggleVal, button) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // /////////////////////////////
 
 
