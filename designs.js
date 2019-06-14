@@ -14,6 +14,12 @@ gridSizeBtn.addEventListener('click', eraseGrid);
 let colorPicker = document.getElementById('colorPicker');
 colorPicker.addEventListener('click', changeColor);
 
+let mouseover = document.getElementById('mouse-over');
+mouseover.addEventListener('click', hoverColor);
+
+let toggler = document.querySelector('.switch');
+console.log(toggler);
+toggler.addEventListener('toggle', hoverColor);
 
 
 function createCanvas(){
@@ -103,13 +109,56 @@ function changeColor(){
 		cell.addEventListener("click", () =>{
       let selectedColor = colorPicker.value;
       console.log(selectedColor);
-      if (selectedColor == undefined){selectedColor = 'red';console.log(selectedColor);}
+      // if (selectedColor == undefined){selectedColor = 'red';console.log(selectedColor);}
       cell.style.backgroundColor = selectedColor;
       cell.style.border = "thin solid white";
 		});
 	});
     // cell.setAttribute("class", "cell");
   };
+
+
+
+function hoverColor(){
+  const cell = document.querySelectorAll('.cell, .colorCell');
+	cell.forEach(cell => {
+		cell.addEventListener("mouseover", () =>{
+      let selectedColor = colorPicker.value;
+      console.log(selectedColor);
+      // if (selectedColor == undefined){selectedColor = 'red';console.log(selectedColor);}
+      cell.style.backgroundColor = selectedColor;
+      cell.style.border = "thin solid white";
+		});
+	});
+    // cell.setAttribute("class", "cell");
+  };
+
+
+// e = 'click'
+// function changeColor(){
+//   const cell = document.querySelectorAll('.cell, .colorCell');
+// 	cell.forEach(cell => {
+// 		if (e === 'click'){
+// 		cell.addEventListener(e, () =>{
+//       let selectedColor = colorPicker.value;
+//       console.log(selectedColor);
+//       if (selectedColor == undefined){selectedColor = 'red';console.log(selectedColor);}
+//       cell.style.backgroundColor = selectedColor;
+//       cell.style.border = "thin solid white";
+// 		});
+// 	} else{
+// 		e = 'mouseover';
+// 		cell.addEventListener(e, () =>{
+//       let selectedColor = colorPicker.value;
+//       console.log(selectedColor);
+//       if (selectedColor == undefined){selectedColor = 'red';console.log(selectedColor);}
+//       cell.style.backgroundColor = selectedColor;
+//       cell.style.border = "thin solid white";
+// 		});
+// 	};
+//     // cell.setAttribute("class", "cell");
+// });
+// }
 
 
 function eraseGrid(){
