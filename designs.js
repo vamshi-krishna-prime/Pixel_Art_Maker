@@ -231,16 +231,6 @@ var toggleButtons = function(toggleVal) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
 // /////////////////////////////
 
 
