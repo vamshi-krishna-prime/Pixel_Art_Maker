@@ -44,12 +44,11 @@ function createCanvas(){
 	const container = document.getElementById('canvas');
 	const canvas = document.createElement('div');
 	canvas.classList.add('canvas');
+  canvas.setAttribute('id','canvasID');
 	container.appendChild(canvas);
-  // const gridHeight = document.getElementById("input_height").value;
-  // const gridWidth = document.getElementById("input_width").value;
 
-  const gridHeight = $("#input_height").val();
-  const gridWidth = $("#input_width").val();
+  const gridHeight = document.getElementById("input_height").value;
+  const gridWidth = document.getElementById("input_width").value;
 
   const submitButton = document.querySelector('input[type=submit]');
   submitButton.addEventListener('click', function () {
@@ -64,10 +63,11 @@ function createCanvas(){
     const cellWidth = canvasSize / gridWidth; // define the height and width of each individual cell, based on the number of cells and canvasSize.
 
 		const cell = document.createElement('div');
-		cell.style.height = `${cellHeight}px`; // create element cell and set the cell height in px
-		cell.style.width = `${cellWidth}px`; // set the cell width in px
+		cell.style.height = cellHeight.toString() + 'px'; // create element cell and set the cell height in px
+		cell.style.width = cellWidth.toString() + 'px'; // set the cell width in px
 		// console.log(cell.style.height);
     // console.log(cell.style.width);
+
 		cell.classList.add('cell'); // add the .cell class to the cell div
 		canvas.appendChild(cell); // add the cell div to the canvas div
 
@@ -75,11 +75,10 @@ function createCanvas(){
 		// 	cell.setAttribute("class", "colorCell");
 		// }); // on mouse over, set the class of the cell div to .colorCell
 
-    cell.addEventListener("click", ()=>{
-      // cell.setAttribute("class", "cell");
-      cell.style.backgroundColor = 'black';
-      cell.style.border = "thin solid white";
-		});
+    // cell.addEventListener("click", ()=>{
+    //   cell.style.backgroundColor = 'black';
+    //   cell.style.border = "thin solid white";
+		// });
 
 	}
 }
@@ -87,7 +86,39 @@ function createCanvas(){
 
 
 function deleteCanvas(){
-	$(".canvas").remove();
+	$(".canvas").remove(); // also works
+
+  // const container = document.getElementById('canvas');
+	// while (container.firstChild) {
+	// 		container.firstChild.remove();
+	// 	} // also works
+
+
+
+	// const canvasID = document.getElementById('canvasID');
+	// if (!canvasID){
+	// 	console.log('no element');
+	// } else{
+	// 	while (canvasID.firstChild) {
+	// 		canvasID.removeChild(canvasID.firstChild);
+	// 	}
+	// 	// canvasID.remove();
+	// }
+
+
+	// const mainHeading = document.querySelectorall(".canvas");
+	// mainHeading.parentElement.removeChild(mainHeading);
+
+	// const container = document.getElementById('canvas');
+	// const canvas = document.getElementsByClassName('canvas');
+	// const canvas = querySelectorAll(".canvas");
+	// container.removeChild('canvas');
+	// canvas.remove();
+
+	// const elems = document.querySelector(".canvas");
+	// elems.remove();
+
+	// document.querySelector(".canvas").remove();
 }
 
 
@@ -113,7 +144,7 @@ function randomColor(){
     let rColor = randomNumber();
   	let gColor = randomNumber();
   	let bColor = randomNumber();
-		cell.style.backgroundColor = `rgb(${rColor},${gColor},${bColor}`;
+		cell.style.backgroundColor = `rgb(${rColor},${gColor},${bColor})`;
 		cell.style.border = "thin solid white";
     // this.removeEventListener('click', randomColor);
 		// cell.setAttribute("class", "colorCell");
@@ -237,6 +268,7 @@ function eraseGrid(){
 
 
 $("#sizePicker").submit(function(event) {
+// document.querySelector("#sizePicker").submit(function(event) {
   event.preventDefault();
 	deleteCanvas();
   createCanvas();
