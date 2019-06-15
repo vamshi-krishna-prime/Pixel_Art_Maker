@@ -14,18 +14,21 @@ gridSizeBtn.addEventListener('click', eraseGrid);
 let colorPicker = document.getElementById('colorPicker');
 colorPicker.addEventListener('click', changeColor);
 
-// let mouseover = document.getElementById('mouse-hover');
-// mouseover.addEventListener('click', hoverColor);
-
-let mouseHover = document.getElementById('mouse-hover');
-mouseHover.addEventListener("mouseover", function() {
-    toggleButtons(1, mouseHover);
-});
+let mouseover = document.getElementById('mouse-hover');
+mouseover.addEventListener('click', function() {hoverColor(1)});
 
 let mouseClick = document.getElementById('click-effect');
-mouseClick.addEventListener("mouseover", function() {
-    toggleButtons(0, mouseHover);
-});
+mouseClick.addEventListener('click', function() {hoverColor(0)});
+
+// let mouseHover = document.getElementById('mouse-hover');
+// mouseHover.addEventListener("click", function() {
+//     toggleButtons(1);
+// });
+
+// let mouseClick = document.getElementById('click-effect');
+// mouseClick.addEventListener("click", function() {
+//     toggleButtons(0);
+// });
 
 let toggler = document.querySelector('.switch');
 console.log(toggler);
@@ -128,78 +131,104 @@ function changeColor(){
 
 
 
-function hoverColor(){
+function hoverColor(effectToggle){
   const cell = document.querySelectorAll('.cell, .colorCell');
 	cell.forEach(cell => {
-		cell.addEventListener("mouseover", () =>{
+    // var effect = function(cell){
+    function effect() {
       let selectedColor = colorPicker.value;
       console.log(selectedColor);
-      // if (selectedColor == undefined){selectedColor = 'red';console.log(selectedColor);}
       cell.style.backgroundColor = selectedColor;
       cell.style.border = "thin solid white";
-		});
-	});
+
+    }
+    if (effectToggle == 1){
+      console.log("mouseover activated");
+      cell.addEventListener("mouseover", effect);
+    } else {
+      console.log("mouseover removed");
+      cell.removeEventListener("mouseover", effect);
+      cell.addEventListener("click", effect);
+    }
+
+  });
     // cell.setAttribute("class", "cell");
   };
 
 // try 1
-
-var toggleButtons = function(toggleVal, button) {
-    var activateColor, clickHandler, hoverHandler;
-
-    // callback function for listener bellow
-    activateColor = function() {
-			const cell = document.querySelectorAll('.cell, .colorCell');
-			cell.forEach(cell => {
-				cell.addEventListener("click", () =>{
-		      let selectedColor = colorPicker.value;
-		      console.log(selectedColor);
-		      // if (selectedColor == undefined){selectedColor = 'red';console.log(selectedColor);}
-		      cell.style.backgroundColor = selectedColor;
-		      cell.style.border = "thin solid white";
-				});
-			});
-    };
-
-		activateHover = function() {
-			const cell = document.querySelectorAll('.cell, .colorCell');
-			cell.forEach(cell => {
-				cell.addEventListener("mouseover", () =>{
-		      let selectedColor = colorPicker.value;
-		      console.log(selectedColor);
-		      cell.style.backgroundColor = selectedColor;
-		      cell.style.border = "thin solid white";
-				});
-			});
-    };
-
-    hoverHandler = function() {
-        button.addEventListener("click", activateHover);
-    };
-    clickHandler = function() {
-        button.removeEventListener("click", activateHover);
-				// button.addEventListener("click", activateColor);
-    };
-
-    // when first argument is 1, make the button functional, otherwise disable its functionality
-    if (toggleVal === 1) {
-        hoverHandler();
-				// activateHover();
-    } else {
-        clickHandler();
-				// activateColor();
-    }
-};
-
+//
+// var toggleButtons = function(toggleVal, button) {
+//     var activateColor, clickHandler, hoverHandler;
+//
+//     // callback function for listener bellow
+//     activateColor = function() {
+// 			const cell = document.querySelectorAll('.cell, .colorCell');
+// 			cell.forEach(cell => {
+// 				cell.addEventListener("click", () =>{
+// 		      let selectedColor = colorPicker.value;
+// 		      console.log(selectedColor);
+// 		      // if (selectedColor == undefined){selectedColor = 'red';console.log(selectedColor);}
+// 		      cell.style.backgroundColor = selectedColor;
+// 		      cell.style.border = "thin solid white";
+// 				});
+// 			});
+//     };
+//
+// 		activateHover = function() {
+// 			const cell = document.querySelectorAll('.cell, .colorCell');
+// 			cell.forEach(cell => {
+// 				cell.addEventListener("mouseover", () =>{
+// 		      let selectedColor = colorPicker.value;
+// 		      console.log(selectedColor);
+// 		      cell.style.backgroundColor = selectedColor;
+// 		      cell.style.border = "thin solid white";
+// 				});
+// 			});
+//     };
+//
+//     hoverHandler = function() {
+//         button.addEventListener("click", activateHover);
+//     };
+//     clickHandler = function() {
+//         button.removeEventListener("click", activateHover);
+// 				// button.addEventListener("click", activateColor);
+//     };
+//
+//     // when first argument is 1, make the button functional, otherwise disable its functionality
+//     if (toggleVal === 1) {
+//         hoverHandler();
+// 				// activateHover();
+//     } else {
+//         clickHandler();
+// 				// activateColor();
+//     }
+// };
+//
 
 // try 2
 
 
+var toggleButtons = function(toggleVal) {
 
+  var activateColor = function(cell){
+    let selectedColor = colorPicker.value;
+    console.log(selectedColor);
+    cell.style.backgroundColor = selectedColor;
+    cell.style.border = "thin solid white";
+  }
 
-
-
-
+  const cell = document.querySelectorAll('.cell, .colorCell');
+  if (toggleVal === 1) {
+    cell.forEach(cell => {
+      cell.addEventListener("mouseover", activateColor(cell));
+    });
+  } else {
+    cell.forEach(cell => {
+      cell.removeEventListener("mouseover", activateColor(cell));
+      cell.addEventListener("mouseover", activateColor(cell));
+    });
+  }
+}
 
 
 
