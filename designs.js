@@ -14,30 +14,6 @@ gridSizeBtn.addEventListener('click', eraseGrid);
 let colorPicker = document.getElementById('colorPicker');
 colorPicker.addEventListener('click', changeColor);
 
-let mouseover = document.getElementById('mouse-hover');
-mouseover.addEventListener('click', function() {hoverColor(1)});
-
-let mouseoverRandom = document.getElementById('mouse-hover-randomColor');
-mouseoverRandom.addEventListener('click', function() {hoverColor(2)});
-
-let mouseClick = document.getElementById('click-effect');
-mouseClick.addEventListener('click', function() {hoverColor(3)});
-
-
-
-// let mouseHover = document.getElementById('mouse-hover');
-// mouseHover.addEventListener("click", function() {
-//     toggleButtons(1);
-// });
-
-// let mouseClick = document.getElementById('click-effect');
-// mouseClick.addEventListener("click", function() {
-//     toggleButtons(0);
-// });
-
-let toggler = document.querySelector('.switch');
-console.log(toggler);
-toggler.addEventListener('toggle', hoverColor);
 
 
 function createCanvas(){
@@ -115,7 +91,6 @@ function randomColor(){
   	let bColor = randomNumber();
 		cell.style.backgroundColor = `rgb(${rColor},${gColor},${bColor}`;
 		cell.style.border = "thin solid white";
-    // this.removeEventListener('click', randomColor);
 		// cell.setAttribute("class", "colorCell");
 		});
 	});
@@ -128,85 +103,13 @@ function changeColor(){
 		cell.addEventListener("click", () =>{
       let selectedColor = colorPicker.value;
       console.log(selectedColor);
+      if (selectedColor == undefined){selectedColor = 'red';console.log(selectedColor);}
       cell.style.backgroundColor = selectedColor;
       cell.style.border = "thin solid white";
 		});
 	});
     // cell.setAttribute("class", "cell");
   };
-
-
-
-function hoverColor(effectToggle){
-  const cell = document.querySelectorAll('.cell, .colorCell');
-	cell.forEach(cell => {
-
-    function effect() {
-      let selectedColor = colorPicker.value;
-      console.log(selectedColor);
-      cell.style.backgroundColor = selectedColor;
-      cell.style.border = "thin solid white";
-    }
-
-    function colorEffect() {
-      let rColor = randomNumber();
-    	let gColor = randomNumber();
-    	let bColor = randomNumber();
-  		cell.style.backgroundColor = `rgb(${rColor},${gColor},${bColor}`;
-  		cell.style.border = "thin solid white";
-    }
-
-    function noColor() {
-  		cell.style.backgroundColor = "";
-      cell.style.border = "";
-    }
-
-    if (effectToggle == 1){
-      console.log("mouseover activated");
-      cell.addEventListener("mouseover", effect);
-    } else if (effectToggle == 2) {
-      console.log("mouseover random color");
-      cell.removeEventListener("click", effect);
-      cell.addEventListener("mouseover", colorEffect);
-    } else if (effectToggle == 3) {
-      console.log("mouse click retrived");
-      cell.removeEventListener("mouseover", effect);
-      cell.removeEventListener("mouseover", colorEffect);
-      cell.addEventListener("click", effect);
-    }
-
-  });
-};
-
-
-
-
-var toggleButtons = function(toggleVal) {
-
-  var activateColor = function(cell){
-    let selectedColor = colorPicker.value;
-    console.log(selectedColor);
-    cell.style.backgroundColor = selectedColor;
-    cell.style.border = "thin solid white";
-  }
-
-  const cell = document.querySelectorAll('.cell, .colorCell');
-  if (toggleVal === 1) {
-    cell.forEach(cell => {
-      cell.addEventListener("mouseover", activateColor(cell));
-    });
-  } else {
-    cell.forEach(cell => {
-      cell.removeEventListener("mouseover", activateColor(cell));
-      cell.addEventListener("mouseover", activateColor(cell));
-    });
-  }
-}
-
-
-
-// /////////////////////////////
-
 
 function eraseGrid(){
   const cell = document.querySelectorAll('.cell, .colorCell');
