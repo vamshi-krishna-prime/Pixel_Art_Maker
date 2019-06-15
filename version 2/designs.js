@@ -27,21 +27,6 @@ let brushEffect = document.getElementById('brush-effect');
 brushEffect.addEventListener('click', function() {hoverColor(4)});
 
 
-// let mouseHover = document.getElementById('mouse-hover');
-// mouseHover.addEventListener("click", function() {
-//     toggleButtons(1);
-// });
-
-// let mouseClick = document.getElementById('click-effect');
-// mouseClick.addEventListener("click", function() {
-//     toggleButtons(0);
-// });
-
-// let toggler = document.querySelector('.switch');
-// console.log(toggler);
-// toggler.addEventListener('toggle', hoverColor);
-
-
 function createCanvas(){
 	const container = document.getElementById('canvas');
 	const canvas = document.createElement('div');
@@ -73,10 +58,6 @@ function createCanvas(){
 		cell.classList.add('cell'); // add the .cell class to the cell div
 		canvas.appendChild(cell); // add the cell div to the canvas div
 
-		// cell.addEventListener("mouseover", ()=>{
-		// 	cell.setAttribute("class", "colorCell");
-		// }); // on mouse over, set the class of the cell div to .colorCell
-
     // cell.addEventListener("click", ()=>{
     //   cell.style.backgroundColor = 'black';
     //   cell.style.border = "thin solid white";
@@ -94,32 +75,6 @@ function deleteCanvas(){
 	while (container.firstChild) {
 			container.firstChild.remove();
 		}
-
-
-	// const canvasID = document.getElementById('canvasID');
-	// if (!canvasID){
-	// 	console.log('no element');
-	// } else{
-	// 	while (canvasID.firstChild) {
-	// 		canvasID.removeChild(canvasID.firstChild);
-	// 	}
-	// 	// canvasID.remove();
-	// }
-
-
-	// const mainHeading = document.querySelectorall(".canvas");
-	// mainHeading.parentElement.removeChild(mainHeading);
-
-	// const container = document.getElementById('canvas');
-	// const canvas = document.getElementsByClassName('canvas');
-	// const canvas = querySelectorAll(".canvas");
-	// container.removeChild('canvas');
-	// canvas.remove();
-
-	// const elems = document.querySelector(".canvas");
-	// elems.remove();
-
-	// document.querySelector(".canvas").remove();
 }
 
 
@@ -319,16 +274,6 @@ var toggleButtons = function(toggleVal) {
     });
   }
 }
-
-
-
-
-
-
-
-
-
-
 
 
 // /////////////////////////////
