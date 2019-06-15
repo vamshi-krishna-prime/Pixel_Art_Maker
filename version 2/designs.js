@@ -86,13 +86,12 @@ function createCanvas(){
 
 
 function deleteCanvas(){
-	$(".canvas").remove(); // also works
+	// $(".canvas").remove(); // also works
 
-  // const container = document.getElementById('canvas');
-	// while (container.firstChild) {
-	// 		container.firstChild.remove();
-	// 	} // also works
-
+  const container = document.getElementById('canvas');
+	while (container.firstChild) {
+			container.firstChild.remove();
+		}
 
 
 	// const canvasID = document.getElementById('canvasID');
@@ -267,9 +266,11 @@ function eraseGrid(){
 }
 
 
-$("#sizePicker").submit(function(event) {
-// document.querySelector("#sizePicker").submit(function(event) {
-  event.preventDefault();
+
+const submitBttn = document.querySelector('#sizePicker');
+submitBttn.addEventListener('click', function(event) {
+  console.log('hello');
 	deleteCanvas();
   createCanvas();
-});
+	event.preventDefault();
+});  //also works
