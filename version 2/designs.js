@@ -23,6 +23,8 @@ mouseoverRandom.addEventListener('click', function() {hoverColor(2)});
 let mouseClick = document.getElementById('click-effect');
 mouseClick.addEventListener('click', function() {hoverColor(3)});
 
+let brushEffect = document.getElementById('brush-effect');
+brushEffect.addEventListener('click', function() {hoverColor(4)});
 
 
 // let mouseHover = document.getElementById('mouse-hover');
@@ -35,9 +37,9 @@ mouseClick.addEventListener('click', function() {hoverColor(3)});
 //     toggleButtons(0);
 // });
 
-let toggler = document.querySelector('.switch');
-console.log(toggler);
-toggler.addEventListener('toggle', hoverColor);
+// let toggler = document.querySelector('.switch');
+// console.log(toggler);
+// toggler.addEventListener('toggle', hoverColor);
 
 
 function createCanvas(){
@@ -47,8 +49,8 @@ function createCanvas(){
   canvas.setAttribute('id','canvasID');
 	container.appendChild(canvas);
 
-  const gridHeight = document.getElementById("input_height").value;
-  const gridWidth = document.getElementById("input_width").value;
+  const gridHeight = document.getElementById("inputHeight").value;
+  const gridWidth = document.getElementById("inputWidth").value;
 
   const submitButton = document.querySelector('input[type=submit]');
   submitButton.addEventListener('click', function () {
@@ -179,6 +181,8 @@ function hoverColor(effectToggle){
 			// cell.removeEventListener(evt.type, this);
 			cell.removeEventListener("mouseover", effect);
 			cell.removeEventListener("click", effect);
+			// this.removeEventListener("mouseover", effect);
+			// this.removeEventListener("click", effect);
     }
 
     function colorEffect(evt) {
@@ -189,6 +193,9 @@ function hoverColor(effectToggle){
   		cell.style.border = "thin solid white";
 			// cell.removeEventListener(evt.type, this);
 			cell.removeEventListener("mouseover", colorEffect);
+			cell.removeEventListener("click", colorEffect);
+			// this.removeEventListener("mouseover", colorEffect);
+			// this.removeEventListener("click", colorEffect);
     }
 
     function noColor() {
@@ -199,22 +206,94 @@ function hoverColor(effectToggle){
     if (effectToggle == 1){
       console.log("mouseover activated");
       cell.addEventListener("mouseover", effect);
-			// console.log("click deactivated");
-			// cell.removeEventListener("click", colorEffect);
+			console.log("click deactivated");
+			cell.removeEventListener("click", colorEffect);
     } else if (effectToggle == 2) {
       console.log("mouseover random color");
       cell.addEventListener("mouseover", colorEffect);
-			// console.log("click deactivated");
-			// cell.removeEventListener("click", effect);
+			console.log("click deactivated");
+			cell.removeEventListener("click", effect);
     } else if (effectToggle == 3) {
       console.log("mouse click retrived");
-      // cell.removeEventListener("mouseover", effect);
-      // cell.removeEventListener("mouseover", colorEffect);
+      cell.removeEventListener("mouseover", effect);
+      cell.removeEventListener("mouseover", colorEffect);
       cell.addEventListener("click", effect);
     }
 
   });
 };
+
+
+
+//
+// function hoverColor(effectToggle){
+// 	const cell = document.querySelectorAll('.cell');
+//
+// 	if (effectToggle == 1){
+// 		console.log("mouseover activated");
+// 		cell.forEach(cell => {
+// 			cell.addEventListener("mouseover", function handler1() {
+// 				let selectedColor = colorPicker.value;
+// 				console.log(selectedColor);
+// 		    cell.style.backgroundColor = selectedColor;
+// 		    cell.style.border = "thin solid white";
+// 				// cell.removeEventListener(evt.type, this);
+// 				this.removeEventListener("mouseover", handler1);
+// 			});
+// 		});
+//
+// 	} else if (effectToggle == 2) {
+// 		console.log("mouseover random color");
+// 		cell.forEach(cell => {
+// 			cell.addEventListener("mouseover", function handler2() {
+// 				let rColor = randomNumber();
+// 	    	let gColor = randomNumber();
+// 	    	let bColor = randomNumber();
+// 	  		cell.style.backgroundColor = `rgb(${rColor},${gColor},${bColor}`;
+// 	  		cell.style.border = "thin solid white";
+// 				// cell.removeEventListener(evt.type, this);
+// 				this.removeEventListener("mouseover", handler2);
+// 			});
+// 		});
+//
+// 	} else if (effectToggle == 3) {
+// 		console.log("mouse click retrived");
+// 		cell.forEach(cell => {
+// 			cell.addEventListener("click", function handler3() {
+// 				let selectedColor = colorPicker.value;
+// 				console.log(selectedColor);
+// 		    cell.style.backgroundColor = selectedColor;
+// 		    cell.style.border = "thin solid white";
+// 				// cell.removeEventListener(evt.type, this);
+// 				this.removeEventListener("click", handler3);
+// 			});
+// 		});
+// 	}
+// 	// } else if (effectToggle == 4){
+// 	// 	console.log("mouseover activated");
+// 	// 	cell.forEach(cell => {
+// 	// 		cell.addEventListener("mouseover", function handler4() {
+// 	// 			let selectedColor = colorPicker.value;
+// 	// 			console.log(selectedColor);
+// 	// 	    // cell.style.backgroundColor = selectedColor;
+// 	// 			cell.style.backgroundColor = "black";
+// 	// 			console.log(cell.style.opacity);
+// 	// 			var opacity = Number(cell.style.opacity);
+// 	// 			console.log(cell.style.opacity);
+// 	// 			console.log(opacity);
+//   //       opacity += 0.1;
+//   //       cell.style.opacity = opacity;
+// 	// 	    cell.style.border = "thin solid white";
+// 	// 			// cell.removeEventListener(evt.type, this);
+// 	// 			this.removeEventListener("mouseover", handler4);
+// 	// 		});
+// 	// 	});
+// 	// }
+//
+// }
+//
+//
+//
 
 
 
@@ -265,12 +344,14 @@ function eraseGrid(){
 	});
 }
 
-
-
-const submitBttn = document.querySelector('#sizePicker');
-submitBttn.addEventListener('click', function(event) {
-  console.log('hello');
-	deleteCanvas();
-  createCanvas();
-	event.preventDefault();
-});  //also works
+// initialize the canvas creation
+document.addEventListener('DOMContentLoaded', function () {
+    console.log('the DOM is ready to be interacted with!');
+		const submitBttn = document.querySelector('#sizePicker');
+		submitBttn.addEventListener('click', function(event) {
+		  console.log('hello');
+			deleteCanvas();
+		  createCanvas();
+			event.preventDefault();
+		});  //also works
+});
