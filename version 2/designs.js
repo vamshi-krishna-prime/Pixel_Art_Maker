@@ -17,8 +17,13 @@ colorPicker.addEventListener('click', changeColor);
 let mouseover = document.getElementById('mouse-hover');
 mouseover.addEventListener('click', function() {hoverColor(1)});
 
+let mouseoverRandom = document.getElementById('mouse-hover-randomColor');
+mouseoverRandom.addEventListener('click', function() {hoverColor(2)});
+
 let mouseClick = document.getElementById('click-effect');
-mouseClick.addEventListener('click', function() {hoverColor(0)});
+mouseClick.addEventListener('click', function() {hoverColor(3)});
+
+
 
 // let mouseHover = document.getElementById('mouse-hover');
 // mouseHover.addEventListener("click", function() {
@@ -61,8 +66,8 @@ function createCanvas(){
 		const cell = document.createElement('div');
 		cell.style.height = `${cellHeight}px`; // create element cell and set the cell height in px
 		cell.style.width = `${cellWidth}px`; // set the cell width in px
-		console.log(cell.style.height);
-    console.log(cell.style.width);
+		// console.log(cell.style.height);
+    // console.log(cell.style.width);
 		cell.classList.add('cell'); // add the .cell class to the cell div
 		canvas.appendChild(cell); // add the cell div to the canvas div
 
@@ -110,6 +115,7 @@ function randomColor(){
   	let bColor = randomNumber();
 		cell.style.backgroundColor = `rgb(${rColor},${gColor},${bColor}`;
 		cell.style.border = "thin solid white";
+    // this.removeEventListener('click', randomColor);
 		// cell.setAttribute("class", "colorCell");
 		});
 	});
@@ -132,80 +138,55 @@ function changeColor(){
 
 
 function hoverColor(effectToggle){
-  const cell = document.querySelectorAll('.cell, .colorCell');
+  const cell = document.querySelectorAll('.cell');
 	cell.forEach(cell => {
-    // var effect = function(cell){
-    function effect() {
+
+    function effect(evt) {
       let selectedColor = colorPicker.value;
       console.log(selectedColor);
       cell.style.backgroundColor = selectedColor;
       cell.style.border = "thin solid white";
-
+			// cell.removeEventListener(evt.type, this);
+			cell.removeEventListener("mouseover", effect);
+			cell.removeEventListener("click", effect);
     }
+
+    function colorEffect(evt) {
+      let rColor = randomNumber();
+    	let gColor = randomNumber();
+    	let bColor = randomNumber();
+  		cell.style.backgroundColor = `rgb(${rColor},${gColor},${bColor}`;
+  		cell.style.border = "thin solid white";
+			// cell.removeEventListener(evt.type, this);
+			cell.removeEventListener("mouseover", colorEffect);
+    }
+
+    function noColor() {
+  		cell.style.backgroundColor = "";
+      cell.style.border = "";
+    }
+
     if (effectToggle == 1){
       console.log("mouseover activated");
       cell.addEventListener("mouseover", effect);
-    } else {
-      console.log("mouseover removed");
-      cell.removeEventListener("mouseover", effect);
+			// console.log("click deactivated");
+			// cell.removeEventListener("click", colorEffect);
+    } else if (effectToggle == 2) {
+      console.log("mouseover random color");
+      cell.addEventListener("mouseover", colorEffect);
+			// console.log("click deactivated");
+			// cell.removeEventListener("click", effect);
+    } else if (effectToggle == 3) {
+      console.log("mouse click retrived");
+      // cell.removeEventListener("mouseover", effect);
+      // cell.removeEventListener("mouseover", colorEffect);
       cell.addEventListener("click", effect);
     }
 
   });
-    // cell.setAttribute("class", "cell");
-  };
+};
 
-// try 1
-//
-// var toggleButtons = function(toggleVal, button) {
-//     var activateColor, clickHandler, hoverHandler;
-//
-//     // callback function for listener bellow
-//     activateColor = function() {
-// 			const cell = document.querySelectorAll('.cell, .colorCell');
-// 			cell.forEach(cell => {
-// 				cell.addEventListener("click", () =>{
-// 		      let selectedColor = colorPicker.value;
-// 		      console.log(selectedColor);
-// 		      // if (selectedColor == undefined){selectedColor = 'red';console.log(selectedColor);}
-// 		      cell.style.backgroundColor = selectedColor;
-// 		      cell.style.border = "thin solid white";
-// 				});
-// 			});
-//     };
-//
-// 		activateHover = function() {
-// 			const cell = document.querySelectorAll('.cell, .colorCell');
-// 			cell.forEach(cell => {
-// 				cell.addEventListener("mouseover", () =>{
-// 		      let selectedColor = colorPicker.value;
-// 		      console.log(selectedColor);
-// 		      cell.style.backgroundColor = selectedColor;
-// 		      cell.style.border = "thin solid white";
-// 				});
-// 			});
-//     };
-//
-//     hoverHandler = function() {
-//         button.addEventListener("click", activateHover);
-//     };
-//     clickHandler = function() {
-//         button.removeEventListener("click", activateHover);
-// 				// button.addEventListener("click", activateColor);
-//     };
-//
-//     // when first argument is 1, make the button functional, otherwise disable its functionality
-//     if (toggleVal === 1) {
-//         hoverHandler();
-// 				// activateHover();
-//     } else {
-//         clickHandler();
-// 				// activateColor();
-//     }
-// };
-//
 
-// try 2
 
 
 var toggleButtons = function(toggleVal) {
