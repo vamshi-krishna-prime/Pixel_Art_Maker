@@ -14,8 +14,18 @@ gridSizeBtn.addEventListener('click', eraseGrid);
 let colorPicker = document.getElementById('colorPicker');
 colorPicker.addEventListener('click', changeColor);
 
-let mouseover = document.getElementById('mouse-over');
-mouseover.addEventListener('click', hoverColor);
+// let mouseover = document.getElementById('mouse-hover');
+// mouseover.addEventListener('click', hoverColor);
+
+let mouseHover = document.getElementById('mouse-hover');
+mouseHover.addEventListener("mouseover", function() {
+    toggleButtons(1, mouseHover);
+});
+
+let mouseClick = document.getElementById('click-effect');
+mouseClick.addEventListener("mouseover", function() {
+    toggleButtons(0, mouseHover);
+});
 
 let toggler = document.querySelector('.switch');
 console.log(toggler);
@@ -109,7 +119,6 @@ function changeColor(){
 		cell.addEventListener("click", () =>{
       let selectedColor = colorPicker.value;
       console.log(selectedColor);
-      // if (selectedColor == undefined){selectedColor = 'red';console.log(selectedColor);}
       cell.style.backgroundColor = selectedColor;
       cell.style.border = "thin solid white";
 		});
@@ -133,32 +142,77 @@ function hoverColor(){
     // cell.setAttribute("class", "cell");
   };
 
+// try 1
 
-// e = 'click'
-// function changeColor(){
-//   const cell = document.querySelectorAll('.cell, .colorCell');
-// 	cell.forEach(cell => {
-// 		if (e === 'click'){
-// 		cell.addEventListener(e, () =>{
-//       let selectedColor = colorPicker.value;
-//       console.log(selectedColor);
-//       if (selectedColor == undefined){selectedColor = 'red';console.log(selectedColor);}
-//       cell.style.backgroundColor = selectedColor;
-//       cell.style.border = "thin solid white";
-// 		});
-// 	} else{
-// 		e = 'mouseover';
-// 		cell.addEventListener(e, () =>{
-//       let selectedColor = colorPicker.value;
-//       console.log(selectedColor);
-//       if (selectedColor == undefined){selectedColor = 'red';console.log(selectedColor);}
-//       cell.style.backgroundColor = selectedColor;
-//       cell.style.border = "thin solid white";
-// 		});
-// 	};
-//     // cell.setAttribute("class", "cell");
-// });
-// }
+var toggleButtons = function(toggleVal, button) {
+    var activateColor, clickHandler, hoverHandler;
+
+    // callback function for listener bellow
+    activateColor = function() {
+			const cell = document.querySelectorAll('.cell, .colorCell');
+			cell.forEach(cell => {
+				cell.addEventListener("click", () =>{
+		      let selectedColor = colorPicker.value;
+		      console.log(selectedColor);
+		      // if (selectedColor == undefined){selectedColor = 'red';console.log(selectedColor);}
+		      cell.style.backgroundColor = selectedColor;
+		      cell.style.border = "thin solid white";
+				});
+			});
+    };
+
+		activateHover = function() {
+			const cell = document.querySelectorAll('.cell, .colorCell');
+			cell.forEach(cell => {
+				cell.addEventListener("mouseover", () =>{
+		      let selectedColor = colorPicker.value;
+		      console.log(selectedColor);
+		      cell.style.backgroundColor = selectedColor;
+		      cell.style.border = "thin solid white";
+				});
+			});
+    };
+
+    hoverHandler = function() {
+        button.addEventListener("click", activateHover);
+    };
+    clickHandler = function() {
+        button.removeEventListener("click", activateHover);
+				// button.addEventListener("click", activateColor);
+    };
+
+    // when first argument is 1, make the button functional, otherwise disable its functionality
+    if (toggleVal === 1) {
+        hoverHandler();
+				// activateHover();
+    } else {
+        clickHandler();
+				// activateColor();
+    }
+};
+
+
+// try 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// /////////////////////////////
 
 
 function eraseGrid(){
