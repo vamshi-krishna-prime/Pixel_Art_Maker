@@ -12,7 +12,8 @@ body {
 .header {
   padding: 10px;
   text-align: center;
-  background: #1abc9c;
+  /* background: #1abc9c; */
+  background: #02b3e4;
   color: white;
 }
 
@@ -47,8 +48,18 @@ body {
 /* Sidebar/left column */
 .side {
   flex: 20%;
-  background-color: #E4E4E4;
+  /* background-color: #E4E4E4; */
+  /* background: rgba(219,226,232,.5); */
+  background: #11161a;
+  /* background: #58646d; */
+  /* border: solid #11161a 1px; */
+  border-right: 1px solid rgba(219,226,232,1);
   padding: 20px;
+  color: grey;
+}
+
+.side h3, h2{
+  color: white;
 }
 
 /* Main column */
@@ -56,13 +67,6 @@ body {
   flex: 70%;
   background-color: white;
   padding: 10px;
-}
-
-/* Fake image, just for this example */
-.fakeimg {
-  background-color: #aaa;
-  width: 100%;
-  padding: 20px;
 }
 
 .image{
@@ -73,34 +77,54 @@ body {
   border-radius: 20%;
 }
 
-/* .btn {
-  background-color: #aaa;
-  width: 100%;
-  padding: 20px;
-} */
-
-.btn{
+/* .btn{
   -webkit-border-radius: 12;
   -moz-border-radius: 12;
   border-radius: 12px;
   font-family: Courier New;
   /* width: auto; */
-  width: 50%;
-  color: #0a080a;
-  font-size: 18px;
-  background: #d9d9d9;
-  padding: 10px 20px 10px 20px;
-  border: solid #949494 1px;
-  margin: 10px;
+  /* width: 50%; */
+  /* background: #d9d9d9; */
+  /* color: #0a080a; */
+  /* font-size: 18px; */
+  /* padding: 10px 20px 10px 20px; */
+  /* border: solid #949494 1px; */
+  /* margin: 10px; */
+  /* display: flex; */
+  /* flex-direction: column; */
+/* } */
+
+/* .btn:hover { */
+  /* background: #949494; */
+  /* text-decoration: none; */
+/* } */
+
+.btn{
+  -webkit-border-radius: 12;
+  -moz-border-radius: 12;
+  font-family: Open Sans,sans-serif;
+  font-size: .8125rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  height: 3rem;
+  padding: 0 2rem;
+  background: #02b3e4;
+  color: #000;
+  border: transparent;
+  border-radius: .25rem;
+  cursor: pointer;
+  margin: 8px;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
+  width: 60%;
 }
 
 .btn:hover {
-  background: #949494;
-  text-decoration: none;
+  color: #fff;
+  box-shadow: 0 0 8px 0 rgba(255,255,255,.16), 0 4px 8px 0 rgba(255,255,255,.08), 0 8px 16px 0 rgba(255,255,255,.08);
 }
-
 
 /* Footer */
 .footer {
@@ -109,12 +133,14 @@ body {
   /* background: #ddd; */
   background-color: #191A1A;
   color: grey;
+  /* color: #11161a; */
 }
 
 .footer h2{
   font-size: 20px;
 }
-/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+/* Responsive layout - when the screen is less than 700px wide, make the
+two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 700px) {
   .row, .navbar {
     flex-direction: column;
@@ -147,6 +173,7 @@ body {
   margin-block-start: 0.4em;
   margin-block-end: 0.8em;
 }
+
 /* ---------------- */
 
 .box{
@@ -207,4 +234,69 @@ input[type=number] {
 }
 
 #reset-btn{
+}
+
+/* /////////////// */
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }
