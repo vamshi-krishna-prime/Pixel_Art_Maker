@@ -14,13 +14,13 @@ The aim of this project is to use the front-end basics learnt throughout the Nan
 + Choose a custom color from the color-palette.
 + Upon mouse click, fill the respective cell with the chosen color.
 
-## Introduction
+## Instructions
 1. Start with choosing the size of the canvas - `Choose Grid Size`
 2. Select the desired color from a palette of colors - `Pick a Color`
 3. Paint the pixels on the canvas using the brush color - `Click on the canvas`
 4. Repeat step 2 for gererating custom image using multiple colors
 
-### Instructions:
+### Model Images:
  The interface is completely user friendly and the quality of the art is depended on the user creativity. Some of the **Model images** created using Pixel Art Maker are displayed below:
  
 <img width="404" alt="Pixel Art Maker model 1" src="https://user-images.githubusercontent.com/49973760/62414669-4006ef00-b63c-11e9-8dff-575a73f2cc7d.png">    <img width="407" alt="Pixel Art Maker model 2" src="https://user-images.githubusercontent.com/49973760/62414679-6b89d980-b63c-11e9-81b3-8dc734110211.png">
