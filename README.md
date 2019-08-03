@@ -1,6 +1,6 @@
 # Pixel Art Maker
 This project is part of - `"Intro to the Programming" Nanodegree` at `Udacity` learning platform.
-The goal of the project is to create custom pixel art by choosing colors from a **'color-palette'**.
+The goal of the project is to create custom pixel art by choosing colors from a 'color-palette'.
 The live version of the project can be accessed using this [Link](https://vamshi-krishna-prime.github.io/Pixel%20Art%20Maker/).
 
 ## Introduction
